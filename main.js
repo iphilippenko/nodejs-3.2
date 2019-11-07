@@ -1,13 +1,13 @@
 const computeWaterAmount = (rockHeightArr = []) => {
-    let maxRockHeight = rockHeightArr.findIndex(el => el === Math.max(...rockHeightArr)),
-        dividedArr = [[...rockHeightArr].slice(0, maxRockHeight), [...rockHeightArr].slice(maxRockHeight + 1)];
+    let maxRockHeight = rockHeightArr.findIndex(el => el === Math.max(...rockHeightArr));
+    let dividedArr = [[...rockHeightArr].slice(0, maxRockHeight), [...rockHeightArr].slice(maxRockHeight + 1)];
     const calcRangeSum = (dividedArrIndex) => {
         if (dividedArr[dividedArrIndex].length > 1) {
-            let maxHeight = Math.max(...dividedArr[dividedArrIndex]),
-                spliceArgs = !dividedArrIndex
-                    ? [dividedArr[dividedArrIndex].indexOf(maxHeight)]
-                    : [0, dividedArr[dividedArrIndex].lastIndexOf(maxHeight) + 1],
-                newRange = dividedArr[dividedArrIndex].splice(...spliceArgs);
+            let maxHeight = Math.max(...dividedArr[dividedArrIndex]);
+            let spliceArgs = !dividedArrIndex
+                ? [dividedArr[dividedArrIndex].indexOf(maxHeight)]
+                : [0, dividedArr[dividedArrIndex].lastIndexOf(maxHeight) + 1];
+            let newRange = dividedArr[dividedArrIndex].splice(...spliceArgs);
             return newRange.reduce((prev, curr) => prev + (maxHeight - curr), 0);
         }
         return 0;
